@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>Gerador de Lista</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h1>Gerador de Lista</h1>
+
+    <form id="formularioLista" novalidate>
+        <input type="number" id="numeroinput" placeholder="Digite a quantidade de itens" min="1">
+        <button type="submit">Gerar Lista</button>
+    </form>
+
+    <div id="mensagensContainer"></div>
+
+    <script>
+      const formularioLista = document.getElementById('formularioLista');
+      const numeroinput = document.getElementById('numeroinput');
+      const mensagensContainer = document.getElementById('mensagensContainer');
+
+      formularioLista.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        mensagensContainer.innerHTML = '';
+
+        const numero = parseInt(numeroinput.value.trim());
+
+        if (isNaN(numero) || numero <= 0) {
+        const erro = document.createElement('p');
+        erro.textContent = 'Por favor, digite um número válido (maior que 0).';
+        erro.style.color = 'red';
+        mensagensContainer.appendChild(erro);
+        return;
+      }
+
+        for (let i = 1; i <= numero; i++) {
+        const mensagem = document.createElement('p');
+        mensagem.textContent = `Emanuel Soares ${i}`;
+        mensagem.classList.add('mensagem');
+        mensagensContainer.appendChild(mensagem);
+      }
+    });
+    </script>
+  </body>
+</html>
