@@ -2,8 +2,37 @@
 <html lang="pt-BR">
   <head>
     <title>Gerador de Lista</title>
-    <link rel="stylesheet" href="styles.css" />
     <meta charset="UTF-8">
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f9f9f9;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      width: 200px;
+    }
+
+    .mensagem {
+      margin-top: 10px;
+      color: #333;
+      font-weight: bold;
+    }
+    
+    ul {
+      list-style-position: inside;
+      list-style: disc;
+      text-align: left;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    
+    </style>
   </head>
   <body>
     <h1>Gerador de Lista</h1>
@@ -35,12 +64,15 @@
         return;
       }
 
+        const lista = document.createElement('ul');
+
         for (let i = 1; i <= numero; i++) {
-        const mensagem = document.createElement('p');
-        mensagem.textContent = `Emanuel Soares ${i}`;
-        mensagem.classList.add('mensagem');
-        mensagensContainer.appendChild(mensagem);
+          const item = document.createElement('li');
+          item.textContent = `Emanuel Soares ${i}`;
+          item.classList.add('mensagem');
+          lista.appendChild(item);
       }
+        mensagensContainer.appendChild(lista);
     });
     </script>
   </body>
